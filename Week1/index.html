@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zap/Fizzle — Class One: Intro to Electricity & Electronics</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap');
+
+  :root {
+    --red: #dc143c;
+    --red-dim: #8b0d24;
+    --yellow: #f5d000;
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --fg: #e8e8e8;
+    --mono: 'Space Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  .reveal-viewport { background: var(--bg); }
+
+  .reveal {
+    font-family: var(--body);
+    font-size: 28px;
+    color: var(--fg);
+  }
+
+  .reveal .slides section {
+    text-align: left;
+    height: 100%;
+    padding: 40px 60px;
+    box-sizing: border-box;
+  }
+
+  /* TITLE SLIDE */
+  .slide-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-title::before {
+    content: 'ZAP/FIZZLE';
+    position: absolute;
+    font-family: var(--display);
+    font-size: 18vw;
+    color: rgba(220,20,60,0.04);
+    letter-spacing: -0.02em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .slide-title h1 {
+    font-family: var(--display);
+    font-size: 5em;
+    letter-spacing: 0.05em;
+    color: var(--red);
+    margin: 0;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .slide-title .class-label {
+    font-family: var(--mono);
+    font-size: 0.7em;
+    color: #666;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.5em;
+  }
+
+  .slide-title .course-info {
+    margin-top: 2em;
+    font-family: var(--mono);
+    font-size: 0.45em;
+    color: #444;
+    border-top: 1px solid #222;
+    padding-top: 1em;
+  }
+
+  /* SECTION HEADERS */
+  .reveal h2 {
+    font-family: var(--display);
+    font-size: 2.4em;
+    letter-spacing: 0.05em;
+    color: var(--fg);
+    margin: 0 0 0.4em 0;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .reveal h3 {
+    font-family: var(--mono);
+    font-size: 0.65em;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0 0 0.8em 0;
+  }
+
+  /* BULLETS */
+  .reveal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .reveal ul li {
+    padding: 0.3em 0 0.3em 1.4em;
+    position: relative;
+    font-size: 0.75em;
+    line-height: 1.5;
+    color: #ccc;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .reveal ul li::before {
+    content: '▸';
+    color: var(--red);
+    position: absolute;
+    left: 0;
+    font-size: 0.8em;
+  }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    height: calc(100% - 80px);
+    align-items: start;
+  }
+
+  .col-block {
+    background: var(--bg2);
+    border: 1px solid #222;
+    border-top: 3px solid var(--red);
+    padding: 1em 1.2em;
+    border-radius: 2px;
+  }
+
+  .col-block h4 {
+    font-family: var(--mono);
+    font-size: 0.55em;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.8em 0;
+  }
+
+  /* IMAGE LAYOUT */
+  .img-row {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 1em;
+    align-items: flex-start;
+  }
+
+  .img-row img {
+    max-height: 220px;
+    max-width: 100%;
+    object-fit: contain;
+    border: 1px solid #222;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .text-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    align-items: center;
+    height: calc(100% - 80px);
+  }
+
+  .text-image-grid img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    border: 1px solid #1e1e1e;
+  }
+
+  .text-block p {
+    font-size: 0.72em;
+    line-height: 1.7;
+    color: #bbb;
+    margin: 0 0 0.8em 0;
+  }
+
+  /* STATEMENT SLIDE */
+  .statement-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .statement-slide .big-statement {
+    font-family: var(--display);
+    font-size: 3.5em;
+    line-height: 0.95;
+    color: var(--fg);
+    text-transform: uppercase;
+    max-width: 80%;
+  }
+
+  /* MATH / FORMULA */
+  .formula-block {
+    background: var(--bg2);
+    border-left: 4px solid var(--red);
+    padding: 0.7em 1.2em;
+    margin: 0.4em 0;
+    font-family: var(--mono);
+    font-size: 0.8em;
+    color: var(--yellow);
+    letter-spacing: 0.05em;
+  }
+
+  /* COMPONENTS */
+  .component-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6em;
+    font-size: 0.72em;
+  }
+
+  .component-item {
+    background: var(--bg2);
+    border: 1px solid #1e1e1e;
+    border-left: 3px solid var(--red);
+    padding: 0.6em 0.8em;
+  }
+
+  .component-item strong {
+    font-family: var(--mono);
+    color: var(--red);
+    display: block;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3em;
+  }
+
+  .component-item span {
+    color: #aaa;
+    line-height: 1.4;
+  }
+
+  /* FINALE */
+  .finale-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .finale-slide h2 {
+    font-size: 4em;
+    color: var(--yellow);
+    text-align: center;
+  }
+
+  .finale-slide .img-row {
+    justify-content: center;
+  }
+
+  /* NOTE */
+  .slide-note {
+    font-family: var(--mono);
+    font-size: 0.45em;
+    color: #555;
+    margin-top: 1.5em;
+    padding-top: 0.8em;
+    border-top: 1px solid #1a1a1a;
+    font-style: italic;
+  }
+
+  /* YOUTUBE LINK */
+  .yt-link {
+    display: inline-block;
+    margin-top: 1em;
+    font-family: var(--mono);
+    font-size: 0.55em;
+    color: var(--red);
+    text-decoration: none;
+    border: 1px solid var(--red-dim);
+    padding: 0.4em 0.8em;
+  }
+
+  .yt-link:hover { background: var(--red-dim); color: white; }
+
+  /* SLIDE NUMBER */
+  .reveal .slide-number {
+    font-family: var(--mono);
+    font-size: 0.5em;
+    color: #333;
+    background: transparent;
+  }
+
+  /* TOC */
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+
+  .toc-list li {
+    counter-increment: toc;
+    font-family: var(--display);
+    font-size: 1.8em;
+    letter-spacing: 0.05em;
+    border-bottom: none;
+    color: #444;
+    padding: 0.2em 0;
+    transition: color 0.3s;
+  }
+
+  .toc-list li::before {
+    content: counter(toc, decimal-leading-zero) '. ';
+    color: var(--red-dim);
+    font-size: 0.6em;
+    vertical-align: middle;
+  }
+
+  .toc-list li.fragment.visible { color: var(--fg); }
+
+  /* Results table */
+  .results-grid {
+    display: grid;
+    gap: 0.6em;
+    margin-top: 0.5em;
+  }
+
+  .result-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    align-items: center;
+    gap: 1em;
+    background: var(--bg2);
+    padding: 0.6em 0.8em;
+    font-size: 0.7em;
+    border: 1px solid #1e1e1e;
+  }
+
+  .result-row .label { color: #888; }
+  .result-row .desc { color: #ccc; }
+  .result-row .value {
+    font-family: var(--mono);
+    color: var(--yellow);
+    font-size: 1.1em;
+    text-align: right;
+  }
+
+  /* Slide decoration */
+  .slide-num-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--mono);
+    font-size: 0.35em;
+    color: #222;
+    letter-spacing: 0.1em;
+  }
+
+  .red-rule {
+    width: 40px;
+    height: 3px;
+    background: var(--red);
+    margin-bottom: 0.8em;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: TITLE -->
+<section>
+  <div class="slide-title">
+    <div class="red-rule"></div>
+    <h1>Zap/<br>Fizzle</h1>
+    <div class="class-label">DSGN-1040 · Digital Tools for Interaction</div>
+    <div class="course-info">Class One — An Introduction to Electricity &amp; Electronics</div>
+  </div>
+</section>
+
+<!-- SLIDE 2: TOC -->
+<section>
+  <h3>Today</h3>
+  <h2>Electronics vs. Electricity</h2>
+  <ul class="toc-list">
+    <li class="fragment">Basic Electrical Theory</li>
+    <li class="fragment">Basic Components</li>
+    <li class="fragment">Basic Circuits</li>
+  </ul>
+</section>
+
+<!-- SLIDE 3: ELECTRICITY VS ELECTRONICS -->
+<section>
+  <h3>The Distinction</h3>
+  <h2>Electricity vs. Electronics</h2>
+  <div class="two-col">
+    <div class="col-block">
+      <h4>Electrical Systems</h4>
+      <ul>
+        <li>Use electricity to directly run a machine</li>
+        <li>Transport potential energy</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <h4>Electronic Systems</h4>
+      <ul>
+        <li>Use electricity to create a complex output based on input variables</li>
+        <li>Electronics are complex thinking systems of electricity.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="img-row">
+    <img src="Pictures/10000000000004B00000064049F2D21E.jpg" alt="">
+    <img src="Pictures/10000000000005DC000004659B67CF27.jpg" alt="">
+    <img src="Pictures/10000000000001F4000001F4FB46F15F.png" alt="">
+  </div>
+</section>
+
+<!-- SLIDE 4: MAGIC? -->
+<section>
+  <h3>Common Misconception</h3>
+  <h2>Magic?</h2>
+  <p style="font-family:var(--mono);font-size:0.6em;color:var(--red);margin-bottom:0.8em;">Electricity...</p>
+  <ul>
+    <li class="fragment">...is the presence and flow of molecular energy (static vs current)</li>
+    <li class="fragment">...requires a clear pathway to flow</li>
+    <li class="fragment">...gets converted to other types of energy</li>
+    <li class="fragment">...is completely predictable</li>
+    <li class="fragment">...is inextricably connected to magnetism</li>
+  </ul>
+  <div class="slide-note">Carl Sagan Disagrees... — We'll look at the relationship with magnetism when we look at motors.</div>
+</section>
+
+<!-- SLIDE 5: HOW -->
+<section>
+  <h3>Atomic Structure</h3>
+  <h2>HOW?</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>Atoms are the building blocks of the physical world. They are made of a centre (nucleus), surrounded by a negatively charged cloud of electrons.</p>
+      <p>Being so negative, electrons look for any excuse to get away. They move from atom to atom as space opens up for them.</p>
+      <p style="font-family:var(--mono);font-size:0.8em;color:#555;">Common thinking: Bohr's model — electrons orbit like planets. Reality: a dense cloud of probability.</p>
+    </div>
+    <div>
+      <img src="Pictures/100000010000045F000004656DC4BE88.png" alt="Atomic structure">
+      <img src="Pictures/10000000000002800000016893C4B62F.jpg" alt="Electrons" style="margin-top:0.5em;">
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: LIGHTBULB -->
+<section>
+  <h3>In Particular</h3>
+  <h2>A Lightbulb</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>A lightbulb has a small wire running through it — the filament. The leads coming into it are much thicker.</p>
+      <p>The thinner filament causes friction with the electrons. The intense resistance causes heat, which gives off radiant energy running from visible light into IR.</p>
+      <p>It doesn't burst into flames because there is no oxygen in the bulb — only inert gases (argon and nitrogen).</p>
+    </div>
+    <img src="Pictures/100000010000032000000310ED1FE0F5.png" alt="Lightbulb diagram">
+  </div>
+</section>
+
+<!-- SLIDE 7: PATHWAYS -->
+<section>
+  <h3>Fundamental Concept</h3>
+  <h2>Pathways</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>This is going to come up again and again.</p>
+      <p>We always need to think about connections.</p>
+    </div>
+    <img src="Pictures/10000000000004B0000002A3AC41DB3B.jpg" alt="Circuit pathways">
+  </div>
+</section>
+
+<!-- SLIDE 8: COMPLEX PATHWAYS -->
+<section>
+  <div class="statement-slide">
+    <div class="red-rule"></div>
+    <div class="big-statement">Pathways can be very complex</div>
+  </div>
+</section>
+
+<!-- SLIDE 9: STOP HYPERVENTILATING -->
+<section>
+  <h3>Relax</h3>
+  <h2>Stop Hyperventilating</h2>
+  <ul>
+    <li class="fragment">We're going to start pretty simple. Think about one or two components — how do we make them work?</li>
+    <li class="fragment">Sometimes the light just won't come on. Why not?</li>
+    <li class="fragment">You will have to stop and consider what is happening in your circuit.</li>
+    <li class="fragment">Often it's because it's just not connected. Always trace connections back — make sure they are what you think they are!</li>
+  </ul>
+</section>
+
+<!-- SLIDE 10: SHORT CIRCUITS -->
+<section>
+  <h3>Common Problem</h3>
+  <h2>Short Circuits</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>It's also possible the thing IS connected, but electricity is finding a route around it — this is called a <strong style="color:var(--red);">short circuit</strong>.</p>
+      <p>Like most of us, electricity will always take the easiest route. <em>The path of least resistance.</em></p>
+      <p>But how does electricity actually move in a circuit?</p>
+    </div>
+    <img src="Pictures/100000000000014A0000014AEC850AD2.jpg" alt="Short circuit diagram">
+  </div>
+</section>
+
+<!-- SLIDE 11: SHORTEST ROUTE -->
+<section>
+  <div class="statement-slide">
+    <div class="red-rule"></div>
+    <div class="big-statement">Which way would YOU rather go?</div>
+    <p style="font-size:0.7em;color:#888;margin-top:1em;max-width:70%;line-height:1.6;">Electricity will ALWAYS find the shortest route to complete the circuit, even (or maybe especially) if it means bypassing the loads in a circuit.</p>
+  </div>
+</section>
+
+<!-- SLIDE 12: ELECTRONS FOLLOW RULES -->
+<section>
+  <h3>Electron Flow</h3>
+  <h2>Even though they are Negative, Electrons still follow rules</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p style="font-family:var(--mono);font-size:0.9em;color:var(--red);">"I gotta get away"</p>
+    </div>
+    <div>
+      <img src="Pictures/1000000000000264000001FE57A10722.jpg" alt="">
+      <img src="Pictures/10000000000001E0000001685702B84A.jpg" alt="" style="margin-top:0.5em;">
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: ELECTRONS FOLLOW RULES 2 -->
+<section>
+  <h3>Electron Flow</h3>
+  <h2>Even though they are Negative, Electrons still follow rules</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p style="font-family:var(--mono);font-size:0.9em;color:var(--red);">"Not without me you ain't"</p>
+    </div>
+    <div>
+      <img src="Pictures/1000000000000264000001FE57A10722.jpg" alt="">
+      <img src="Pictures/10000000000001E0000001685702B84A.jpg" alt="" style="margin-top:0.5em;">
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: FINE -->
+<section>
+  <div class="text-image-grid" style="align-items:center;">
+    <div>
+      <div style="font-family:var(--display);font-size:3em;line-height:1;color:#666;">W-whhaaa?</div>
+      <div style="font-family:var(--display);font-size:3em;line-height:1;color:#444;">Fffff!</div>
+      <div style="font-family:var(--display);font-size:3em;line-height:1;color:var(--red);">Fine.</div>
+    </div>
+    <img src="Pictures/100000000000040000000600456EA12E.jpg" alt="">
+  </div>
+</section>
+
+<!-- SLIDE 15: WATER ANALOGY 1 -->
+<section>
+  <h3>The Water Analogy</h3>
+  <h2>There really is no escaping it</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>Behold! The world's crappiest water tower!</p>
+      <p>The tap is off. No water flows. This sucks.</p>
+      <p>Huzzah! The tap is on! Water flows freely! ...Somewhat freely. There isn't much pressure. Flow is slow.</p>
+    </div>
+    <div class="img-row" style="flex-direction:column;">
+      <img src="Pictures/100000010000013600000205A4DE77AC.png" alt="">
+      <img src="Pictures/100000010000015B00000215503A19E2.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: WATER ANALOGY 2 -->
+<section>
+  <h3>The Water Analogy</h3>
+  <h2>There really is no escaping it</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>Double huzzah! Extra water has increased pressure!</p>
+      <p>Now there is a righteous splooge of watts.</p>
+      <p style="font-family:var(--mono);font-size:0.8em;color:var(--red);">Watt? Watt is going on here?</p>
+    </div>
+    <img src="Pictures/100000010000025D000002328445268B.png" alt="">
+  </div>
+</section>
+
+<!-- SLIDE 17: WATER ANALOGY 3 -->
+<section>
+  <h3>The Water Analogy</h3>
+  <h2>There really is no escaping it</h2>
+  <div class="text-image-grid">
+    <div class="text-block">
+      <p>Currently we've increased the pipe. Moar water!</p>
+      <p style="font-family:var(--mono);font-size:0.75em;color:var(--red);">I am so amped up right now! Splain how this all works!</p>
+    </div>
+    <img src="Pictures/100000010000033D0000026D47361B3E.png" alt="">
+  </div>
+</section>
+
+<!-- SLIDE 18: SHOCKING RESULTS -->
+<section>
+  <h3>The Water Analogy</h3>
+  <h2>The Shocking Results</h2>
+  <div class="results-grid">
+    <div class="result-row">
+      <span class="label">Volume / Height</span>
+      <span class="desc">affects pressure of splooge. Force</span>
+      <span class="value">= Volts</span>
+    </div>
+    <div class="result-row">
+      <span class="label">Size of outlet</span>
+      <span class="desc">affects capacity splooged at any given moment</span>
+      <span class="value">= Amps</span>
+    </div>
+    <div class="result-row">
+      <span class="label">Resultant splooge</span>
+      <span class="desc">the actual power delivered</span>
+      <span class="value">= Watts</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19: OHM MY GOD -->
+<section>
+  <h3>The Math</h3>
+  <h2>Ohm my god!</h2>
+  <div class="formula-block fragment">Watts = Volts × Amps</div>
+  <div class="formula-block fragment">Volts = Watts / Amps</div>
+  <div class="formula-block fragment">Amps = Watts / Volts</div>
+  <p class="fragment" style="font-size:0.7em;color:#888;margin-top:0.8em;">Simple math is simple!</p>
+  <div class="slide-note">We will revisit this with real numbers and ways of measuring them!</div>
+</section>
+
+<!-- SLIDE 20: MATHEMATICAL -->
+<section>
+  <h3>Power Relationships</h3>
+  <h2>Mathematical!</h2>
+  <p style="font-size:0.7em;color:#888;margin-bottom:1em;">Two more ways to visualize the power relationship.</p>
+  <div class="img-row">
+    <img src="Pictures/10000001000001D5000000B63E8EDF10.png" alt="Power triangle">
+    <img src="Pictures/100000010000019B000001CD177BF9CF.png" alt="Ohm's law wheel">
+  </div>
+</section>
+
+<!-- SLIDE 21: BITS + PIECES -->
+<section>
+  <h3>Components</h3>
+  <h2>Bits + Pieces</h2>
+  <div class="text-image-grid">
+    <div>
+      <ul>
+        <li class="fragment">We know current flow requires a pathway.</li>
+        <li class="fragment">This pathway is usually made of highly conductive material.</li>
+        <li class="fragment">The opposite of conducting is insulating — this impedes current flow.</li>
+        <li class="fragment">A wire is a highly conductive material encased in an insulator.</li>
+        <li class="fragment">Copper, Silver, Gold — all the junk we make jewellery from makes great conductors!</li>
+      </ul>
+    </div>
+    <img src="Pictures/10000001000003600000032B587D837A.png" alt="">
+  </div>
+</section>
+
+<!-- SLIDE 22: INSULATORS -->
+<section>
+  <h3>Components</h3>
+  <h2>Other Insulators</h2>
+  <p style="font-family:var(--mono);font-size:0.6em;color:var(--red);margin-bottom:0.8em;">"Keepy safies" and "Get in the wayies"</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5em;align-items:start;">
+    <ul>
+      <li>Vinyls, plastics, rubbers</li>
+      <li>Fibrous material (wood, paper, hair, wool, silk)</li>
+      <li>Vitreous &amp; ceramic material</li>
+      <li>Skin? — Lichtenberg marks from lightning strike.</li>
+    </ul>
+    <div class="img-row" style="flex-wrap:wrap;">
+      <img src="Pictures/1000000000000275000002A32EA79558.jpg" alt="" style="max-height:140px;">
+      <img src="Pictures/1000000000000514000003BDD1478039.jpg" alt="" style="max-height:140px;">
+      <img src="Pictures/10000001000004B0000003BB7ABB4F02.png" alt="" style="max-height:140px;">
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 23: ELECTRICAL PATHWAYS / DANGER -->
+<section>
+  <h3>Safety</h3>
+  <h2>Electrical Pathways</h2>
+  <p style="font-family:var(--mono);font-size:0.65em;color:var(--red);margin-bottom:0.8em;">Heart attack in a can</p>
+  <ul>
+    <li class="fragment">Basically any metal</li>
+    <li class="fragment">...just add water</li>
+    <li class="fragment">Can disrupt biological processes</li>
+    <li class="fragment">Voltage breakdown</li>
+  </ul>
+  <a class="yt-link" href="https://www.youtube.com/watch?v=9iKD7vuq-rY" target="_blank">▶ youtube.com/watch?v=9iKD7vuq-rY</a>
+</section>
+
+<!-- SLIDE 24: COMPONENTS OVERVIEW -->
+<section>
+  <h3>Components</h3>
+  <h2>Bits N Pieces</h2>
+  <p style="font-family:var(--mono);font-size:0.5em;color:#555;margin-bottom:0.8em;">Like Lego, but more electrocutiony</p>
+  <div class="component-grid">
+    <div class="component-item">
+      <strong>Switches</strong>
+      <span>Open or close electrical pathways. Some have multiple states.</span>
+    </div>
+    <div class="component-item">
+      <strong>Resistors</strong>
+      <span>Reduce or redirect current flow precisely. Colour bands indicate value. Not polarized.</span>
+    </div>
+    <div class="component-item">
+      <strong>Batteries</strong>
+      <span>Store and provide running electricity. Always polarized.</span>
+    </div>
+    <div class="component-item">
+      <strong>Capacitors</strong>
+      <span>Store electricity. Some, but not all, polarized.</span>
+    </div>
+    <div class="component-item" style="grid-column:1/-1;">
+      <strong>Diodes</strong>
+      <span>Allow current to pass in one direction only. Cover a huge range of functions including signal transmission, voltage protection and regulation.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 25: DIODES / FINALE -->
+<section>
+  <div class="finale-slide">
+    <div style="font-family:var(--display);font-size:4em;color:var(--yellow);text-align:center;line-height:0.9;">DIODES!!</div>
+    <ul style="text-align:center;margin-top:1em;">
+      <li class="fragment" style="border:none;padding-left:0;">Allow electricity to flow in one direction only</li>
+      <li class="fragment" style="border:none;padding-left:0;">...some can also produce electrical current from <em>light</em>!</li>
+      <li class="fragment" style="border:none;padding-left:0;">...some can also produce <em>light</em> from electricity!</li>
+      <li class="fragment" style="border:none;padding-left:0;color:var(--red);font-family:var(--display);font-size:1.5em;letter-spacing:0.1em;">Yay LEDs!!</li>
+    </ul>
+    <div class="img-row" style="justify-content:center;margin-top:1em;">
+      <img src="Pictures/1000000100000500000002258BA5A812.png" alt="" style="max-height:160px;">
+      <img src="Pictures/10000001000009C40000036F7873CD4E.png" alt="" style="max-height:160px;">
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  backgroundTransition: 'fade',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1200,
+  height: 700,
+  margin: 0,
+  plugins: []
+});
+</script>
+</body>
+</html>
