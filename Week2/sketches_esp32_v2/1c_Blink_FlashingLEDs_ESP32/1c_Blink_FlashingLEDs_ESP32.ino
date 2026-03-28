@@ -9,7 +9,7 @@
   by Arturo Guadalupi
   modified 8 Sep 2016
   by Colby Newman
-  modified 2022 
+  modified 2022
   by Theverant
 
   This example code is in the public domain.
@@ -18,10 +18,10 @@
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
 
-// pins 13→25, 12→32
+// pins 13→12, 12→13
 
-#define LED_A 25
-#define LED_B 32
+#define LED_A 12
+#define LED_B 13
 
 void setup() {
   pinMode(LED_A, OUTPUT);
@@ -29,10 +29,10 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(LED_A, HIGH);
-  digitalWrite(LED_B, LOW);
+  digitalWrite(LED_A, HIGH);  // turn LED_A on
+  digitalWrite(LED_B, LOW);   // turn LED_B off
   delay(500);
-  digitalWrite(LED_A, LOW);
-  digitalWrite(LED_B, HIGH);
+  digitalWrite(LED_A, LOW);   // turn LED_A off
+  digitalWrite(LED_B, HIGH);  // turn LED_B on
   delay(500);
 }

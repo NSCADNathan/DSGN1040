@@ -1,61 +1,44 @@
-/*
-  Blink
+// Blink - ESP32 Wrover
+// Original pins 11,12,13 → remapped to 32,33,25
 
-  Turns an LED on for one second, then off for one second, repeatedly.
+#define PIN_A 25
+#define PIN_B 32
+#define PIN_C 33
 
-  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
-  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
-  the correct LED pin independent of which board is used.
-  If you want to know what pin the on-board LED is connected to on your Arduino
-  model, check the Technical Specs of your board at:
-  https://www.arduino.cc/en/Main/Products
-
-  modified 8 May 2014
-  by Scott Fitzgerald
-  modified 2 Sep 2016
-  by Arturo Guadalupi
-  modified 8 Sep 2016
-  by Colby Newman
-
-  This example code is in the public domain.
-
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
-*/
-
-// the setup function runs once when you press reset or power the board
 void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
-  pinMode(11, OUTPUT);
+  pinMode(PIN_A, OUTPUT);
+  pinMode(PIN_B, OUTPUT);
+  pinMode(PIN_C, OUTPUT);
 }
 
-// the loop function runs over and over again forever
 void loop() {
-  digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(13, HIGH);
-  delay(100);                       // wait for a second
-  digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(13, LOW);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
   delay(100);
-  digitalWrite(11, HIGH);
-  digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(13, HIGH);
-  delay(100);                       // wait for a second
-  digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(13, LOW);
-  delay(100);                       // wait for a second
-digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(13, HIGH);
-  delay(100);                       // wait for a second
-  digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(13, LOW);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
   delay(100);
-  digitalWrite(11, LOW);
-  digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(13, HIGH);
-  delay(100);                       // wait for a second
-  digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(13, LOW);
+
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  delay(100);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
+  delay(100);
+
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  delay(100);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
+  delay(100);
+
+  digitalWrite(PIN_A, LOW);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  delay(100);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
   delay(100);
 }
